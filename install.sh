@@ -243,13 +243,13 @@ fi
 # ping
 ping_pmail_service(){
     URL="$1";
-    TIMEOUT=300
+    TIMEOUT=120
     INTERVAL=5
 
     start_time=$(date +%s)
     while true; do
         # 单次请求超时5秒（避免单次检测卡死）
-       http_code=$(curl -sIL -w "%{http_code}" -m 5 -o /dev/null "$URL")
+        http_code=$(curl -sIL -w "%{http_code}" -m 5 -o /dev/null "$URL")
         
         if [[ "$http_code" =~ ^2 ]]; then
             echo -e "\n\033[36m[$(date)] PMail 已可访问\033[0m"
@@ -393,7 +393,7 @@ fetch_and_process_json() {
  
 echo -e "\n\033[36m检测PMail服务是否正常...\033[0m"
 
-#ping_pmail_service "http://$PMAIL_IP/"
+ping_pmail_service "http://$PMAIL_IP/"
 
 
 
