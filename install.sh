@@ -241,33 +241,33 @@ else
 fi
 
 # ping
-ping_pmail_service(){
-    URL="$1";
-    TIMEOUT=60
-    INTERVAL=5
+#ping_pmail_service(){
+#    URL="$1";
+#    TIMEOUT=60
+#    INTERVAL=5
 
-    start_time=$(date +%s)
-    while true; do
-        # 单次请求超时5秒（避免单次检测卡死）
-        http_code=$(curl -sIL -w "%{http_code}" -m 5 -o /dev/null "$URL")
+ #   start_time=$(date +%s)
+ #   while true; do
+ #       # 单次请求超时5秒（避免单次检测卡死）
+ #       http_code=$(curl -sIL -w "%{http_code}" -m 5 -o /dev/null "$URL")
         
-        if [[ "$http_code" =~ ^2 ]]; then
-            echo -e "\n\033[36m[$(date)] PMail 已可访问\033[0m"
-            return 0
-        fi
+ #       if [[ "$http_code" =~ ^2 ]]; then
+ #           echo -e "\n\033[36m[$(date)] PMail 已可访问\033[0m"
+ #           return 0
+  #      fi
         
         # 计算已耗时
-        current_time=$(date +%s)
-        elapsed=$((current_time - start_time))
+   #     current_time=$(date +%s)
+  #      elapsed=$((current_time - start_time))
         
-        if [ $elapsed -ge $TIMEOUT ]; then
-            echo -e "\033[31m[$(date)] PMail超时（${TIMEOUT}秒）未访问成功，退出程序，请重新处理\033[0m"
-            exit 1
-        fi
+  #      if [ $elapsed -ge $TIMEOUT ]; then
+  #          echo -e "\033[31m[$(date)] PMail超时（${TIMEOUT}秒）未访问成功，退出程序，请重新处理\033[0m"
+  #          exit 1
+  #      fi
         
-        sleep $INTERVAL
-    done
-}
+  #      sleep $INTERVAL
+  #  done
+#}
 
 
 
