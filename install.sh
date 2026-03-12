@@ -415,5 +415,5 @@ fetch_and_process_json "配置PMail域名..." $PMAIL_IP "$JSON_DATA" 0
 fetch_and_process_json "生成DNS记录..." $PMAIL_IP '{"action":"get","step":"dns"}' 1
 fetch_and_process_json "SSL配置..." $PMAIL_IP '{"action":"set","step":"ssl","ssl_type":"0","key_path":"./config/ssl/private.key","crt_path":"./config/ssl/public.crt"}' 0
 
-echo -e "\n\033[36m$设置hostname\033[0m"
+echo -e "\n\033[36m主机名已设置为: $(hostname)\033[0m"
 
