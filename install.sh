@@ -24,6 +24,12 @@ PASSWORD=$3
 ACCECSS_KEY=$4
 ACCECSS_SECRET=$5
 
+# ==================== 设置主机名 ====================
+echo -e "\n\033[36m设置主机名为 smtp.$DOMAIN ...\033[0m"
+sudo hostnamectl set-hostname smtp.$DOMAIN
+export HOSTNAME=$(hostname)  # 让当前脚本进程也能读到新主机名
+echo -e "\033[32m主机名已设置为：$(hostname)\033[0m"
+
 # 检测Docker是否已安装
 check_docker_installed() {
     echo -e "\033[32m[依赖检测] Docker\033[0m"
@@ -410,4 +416,4 @@ fetch_and_process_json "生成DNS记录..." $PMAIL_IP '{"action":"get","step":"d
 fetch_and_process_json "SSL配置..." $PMAIL_IP '{"action":"set","step":"ssl","ssl_type":"0","key_path":"./config/ssl/private.key","crt_path":"./config/ssl/public.crt"}' 0
 
 echo -e "\n\033[36m$设置hostname\033[0m"
-sudo hostnamectl set-hostname smtp.$DOMAIN
+
