@@ -370,7 +370,7 @@ aliyun alidns DeleteSubDomainRecords --profile AkProfile1 --region cn-zhangjiako
 
 aliyun alidns AddDomainRecord --profile AkProfile1 --region cn-zhangjiakou \
   --Type TXT \
-  --Value "v=DMARC1; p=none" \
+  --Value "v=DMARC1; p=none; sp=none" \
   --TTL 600 \
   --Priority 1 \
   --DomainName "$DOMAIN" \
